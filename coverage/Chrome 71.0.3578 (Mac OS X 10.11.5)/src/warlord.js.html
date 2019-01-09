@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for src/warlord.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../index.html">all files</a> / <a href="index.html">src/</a> warlord.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">42.31% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>11/26</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">24% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>6/25</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">54.55% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>6/11</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>1/1</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span></td><td class="text"><pre class="prettyprint lang-js">!function(t){var n={};function I(g){<span class="missing-if-branch" title="if path not taken" >I</span>if(n[g])<span class="cstat-no" title="statement not covered" >return n[g].exports;v</span>ar e=n[g]={i:g,l:!1,exports:{}};return t[g].call(e.exports,e,e.exports,I),e.l=!0,e.exports}I.m=t,I.c=n,I.d=function(t,n,g){I.o(t,n)||Object.defineProperty(t,n,{enumerable:!0,get:g})},I.r=function(t){"undefined"!=typeof Symbol&amp;&amp;Symbol.toStringTag&amp;&amp;Object.defineProperty(t,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(t,"__esModule",{value:!0})},I.t=<span class="fstat-no" title="function not covered" >function(t,n){<span class="cstat-no" title="statement not covered" ></span>if(1&amp;n&amp;&amp;(t=I(t)),8&amp;n)<span class="cstat-no" title="statement not covered" >return t;<span class="cstat-no" title="statement not covered" >i</span></span>f(4&amp;n&amp;&amp;"object"==typeof t&amp;&amp;t&amp;&amp;t.__esModule)<span class="cstat-no" title="statement not covered" >return t;<span class="cstat-no" title="statement not covered" >v</span></span>ar g=Object.create(null);<span class="cstat-no" title="statement not covered" >i</span>f(I.r(g),Object.defineProperty(g,"default",{enumerable:!0,value:t}),2&amp;n&amp;&amp;"string"!=typeof t)<span class="cstat-no" title="statement not covered" >for(var e in t)<span class="cstat-no" title="statement not covered" >I.d(g,e,<span class="fstat-no" title="function not covered" >function(n){<span class="cstat-no" title="statement not covered" ></span>return t[n]}</span>.bind(null,e));<span class="cstat-no" title="statement not covered" >r</span></span></span>eturn g}</span>,I.n=<span class="fstat-no" title="function not covered" >function(t){<span class="cstat-no" title="statement not covered" ></span>var n=t&amp;&amp;t.__esModule?<span class="fstat-no" title="function not covered" >function(){<span class="cstat-no" title="statement not covered" ></span>return t.default}</span>:<span class="fstat-no" title="function not covered" >function(){<span class="cstat-no" title="statement not covered" ></span>return t}</span>;<span class="cstat-no" title="statement not covered" >r</span>eturn I.d(n,"a",n),n}</span>,I.o=function(t,n){return Object.prototype.hasOwnProperty.call(t,n)},I.p="/var/folders/zz/zyxvpxvq6csfxvn_n00000s4000069/T/_karma_webpack_/",I(I.s=1)}([,function(module,__webpack_exports__,__webpack_require__){"use strict";eval('__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Warlord", function() { return Warlord; });\nclass Warlord {\n  constructor(type, name) {\n    this.playerName = name;\n    this.playerType = type;\n    this.currentHP = 0\n    this.currentMP = 0\n    this.maxHP = 0;\n    this.maxMP = 0;\n    this.armor = 0;\n    this.attack = 0;\n    this.special = 0;\n    this.specialMana = 0;\n    this.xp = 0;\n    this.level = 1;\n    this.maxXP = 100;\n    this.inventory = [];\n  }\n  buildWarrior() {\n    this.maxHP = 200;\n    this.currentHP = this.maxHP;\n    this.maxMP = 10;\n    this.currentMP = this.maxMP;\n    this.armor = 5;\n    this.attack = 10;\n    this.special = 10;\n  }\n  buildMage() {\n    this.maxHP = 100;\n    this.currentHP = this.maxHP;\n    this.maxMP = 20;\n    this.currentMP = this.maxMP;\n    this.armor = 0;\n    this.attack = 20;\n    this.special = 20;\n  }\n  buildEnemy(level) {\n    // need to change these based on level\n    this.maxHP = 100;\n    this.currentHP = this.maxHP;\n    this.maxMP = 20;\n    this.currentMP = this.maxMP;\n    this.armor = 0;\n    this.attack = 20;\n    this.special = 20;\n    this.level = level;\n  }\n  gainXP(amount) {\n    this.xp += amount;\n    if (this.xp &gt;= this.maxXP) {\n      this.level++;\n      this.xp -= this.maxXP;\n      this.maxXP = 100 * this.level;\n      this.gainLevel();\n    }\n  }\n  gainLevel() {\n    this.maxHP *= 1.1;\n    this.maxMP *= 1.1;\n    this.attack *= 1.1;\n    this.currentHP = this.maxHP;\n    this.currentMP = this.maxMP;\n  }\n  itemTypeDrop() {\n    let random = Math.floor((Math.random() * 12) + 1);\n    if (random &lt;= 6) {\n      // intentionally empty\n    }\n    else if (random == 7) {\n      this.dropArmor();\n    } else if (random == 8) {\n      this.dropWeapon();\n    } else if (random &lt;= 10) {\n      this.dropManaPotion();\n    } else {\n      this.dropHealthPotion();\n    }\n  }\n  hit(opponent) {\n    if (this.attack &gt; opponent.armor) {\n      let damage = this.attack - opponent.armor;\n      if (damage &gt;= Math.floor(Math.random())) {\n        opponent.HP -= damage;\n      } else {\n        console.log("Blocked!");\n      }\n    } else {\n      console.log("Missed!");\n    }\n\n    if (opponent.currentHP &lt;= 0) {\n      opponent.battleEnd();\n    }\n  }\n\n  specialHit(opponent) {\n    this.Mana -= this.specialMana;\n    let specialAttack = this.attack * (1 + this.special / 100);\n    if (specialAttack &gt; opponent.armor) {\n      let damage = specialAttack - opponent.armor;\n      if (damage &gt;= Math.floor(Math.random())) {\n        opponent.HP -= damage;\n      } else {\n        console.log("Blocked!");\n      }\n    } else {\n      console.log("Missed!");\n    }\n\n    if (opponent.currentHP &lt;= 0) {\n      opponent.battleEnd();\n    }\n  }\n  battleEnd() {\n    if (this.playerType == "Warrior" || this.playerType == "Mage") {\n      this.gameOver();\n    } else {\n      // itemTypeDrop();\n\n    }\n  }\n}\n\n\n\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9zcmMvd2FybG9yZC5qcz80OWY1Il0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0FBQUE7QUFBTztBQUNQO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQSxLQUFLO0FBQ0w7QUFDQSxLQUFLO0FBQ0w7QUFDQSxLQUFLO0FBQ0w7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBLE9BQU87QUFDUDtBQUNBO0FBQ0EsS0FBSztBQUNMO0FBQ0E7O0FBRUE7QUFDQTtBQUNBO0FBQ0E7O0FBRUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQSxPQUFPO0FBQ1A7QUFDQTtBQUNBLEtBQUs7QUFDTDtBQUNBOztBQUVBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0EsS0FBSztBQUNMOztBQUVBO0FBQ0E7QUFDQSIsImZpbGUiOiIxLmpzIiwic291cmNlc0NvbnRlbnQiOlsiZXhwb3J0IGNsYXNzIFdhcmxvcmQge1xuICBjb25zdHJ1Y3Rvcih0eXBlLCBuYW1lKSB7XG4gICAgdGhpcy5wbGF5ZXJOYW1lID0gbmFtZTtcbiAgICB0aGlzLnBsYXllclR5cGUgPSB0eXBlO1xuICAgIHRoaXMuY3VycmVudEhQID0gMFxuICAgIHRoaXMuY3VycmVudE1QID0gMFxuICAgIHRoaXMubWF4SFAgPSAwO1xuICAgIHRoaXMubWF4TVAgPSAwO1xuICAgIHRoaXMuYXJtb3IgPSAwO1xuICAgIHRoaXMuYXR0YWNrID0gMDtcbiAgICB0aGlzLnNwZWNpYWwgPSAwO1xuICAgIHRoaXMuc3BlY2lhbE1hbmEgPSAwO1xuICAgIHRoaXMueHAgPSAwO1xuICAgIHRoaXMubGV2ZWwgPSAxO1xuICAgIHRoaXMubWF4WFAgPSAxMDA7XG4gICAgdGhpcy5pbnZlbnRvcnkgPSBbXTtcbiAgfVxuICBidWlsZFdhcnJpb3IoKSB7XG4gICAgdGhpcy5tYXhIUCA9IDIwMDtcbiAgICB0aGlzLmN1cnJlbnRIUCA9IHRoaXMubWF4SFA7XG4gICAgdGhpcy5tYXhNUCA9IDEwO1xuICAgIHRoaXMuY3VycmVudE1QID0gdGhpcy5tYXhNUDtcbiAgICB0aGlzLmFybW9yID0gNTtcbiAgICB0aGlzLmF0dGFjayA9IDEwO1xuICAgIHRoaXMuc3BlY2lhbCA9IDEwO1xuICB9XG4gIGJ1aWxkTWFnZSgpIHtcbiAgICB0aGlzLm1heEhQID0gMTAwO1xuICAgIHRoaXMuY3VycmVudEhQID0gdGhpcy5tYXhIUDtcbiAgICB0aGlzLm1heE1QID0gMjA7XG4gICAgdGhpcy5jdXJyZW50TVAgPSB0aGlzLm1heE1QO1xuICAgIHRoaXMuYXJtb3IgPSAwO1xuICAgIHRoaXMuYXR0YWNrID0gMjA7XG4gICAgdGhpcy5zcGVjaWFsID0gMjA7XG4gIH1cbiAgYnVpbGRFbmVteShsZXZlbCkge1xuICAgIC8vIG5lZWQgdG8gY2hhbmdlIHRoZXNlIGJhc2VkIG9uIGxldmVsXG4gICAgdGhpcy5tYXhIUCA9IDEwMDtcbiAgICB0aGlzLmN1cnJlbnRIUCA9IHRoaXMubWF4SFA7XG4gICAgdGhpcy5tYXhNUCA9IDIwO1xuICAgIHRoaXMuY3VycmVudE1QID0gdGhpcy5tYXhNUDtcbiAgICB0aGlzLmFybW9yID0gMDtcbiAgICB0aGlzLmF0dGFjayA9IDIwO1xuICAgIHRoaXMuc3BlY2lhbCA9IDIwO1xuICAgIHRoaXMubGV2ZWwgPSBsZXZlbDtcbiAgfVxuICBnYWluWFAoYW1vdW50KSB7XG4gICAgdGhpcy54cCArPSBhbW91bnQ7XG4gICAgaWYgKHRoaXMueHAgPj0gdGhpcy5tYXhYUCkge1xuICAgICAgdGhpcy5sZXZlbCsrO1xuICAgICAgdGhpcy54cCAtPSB0aGlzLm1heFhQO1xuICAgICAgdGhpcy5tYXhYUCA9IDEwMCAqIHRoaXMubGV2ZWw7XG4gICAgICB0aGlzLmdhaW5MZXZlbCgpO1xuICAgIH1cbiAgfVxuICBnYWluTGV2ZWwoKSB7XG4gICAgdGhpcy5tYXhIUCAqPSAxLjE7XG4gICAgdGhpcy5tYXhNUCAqPSAxLjE7XG4gICAgdGhpcy5hdHRhY2sgKj0gMS4xO1xuICAgIHRoaXMuY3VycmVudEhQID0gdGhpcy5tYXhIUDtcbiAgICB0aGlzLmN1cnJlbnRNUCA9IHRoaXMubWF4TVA7XG4gIH1cbiAgaXRlbVR5cGVEcm9wKCkge1xuICAgIGxldCByYW5kb20gPSBNYXRoLmZsb29yKChNYXRoLnJhbmRvbSgpICogMTIpICsgMSk7XG4gICAgaWYgKHJhbmRvbSA8PSA2KSB7XG4gICAgICAvLyBpbnRlbnRpb25hbGx5IGVtcHR5XG4gICAgfVxuICAgIGVsc2UgaWYgKHJhbmRvbSA9PSA3KSB7XG4gICAgICB0aGlzLmRyb3BBcm1vcigpO1xuICAgIH0gZWxzZSBpZiAocmFuZG9tID09IDgpIHtcbiAgICAgIHRoaXMuZHJvcFdlYXBvbigpO1xuICAgIH0gZWxzZSBpZiAocmFuZG9tIDw9IDEwKSB7XG4gICAgICB0aGlzLmRyb3BNYW5hUG90aW9uKCk7XG4gICAgfSBlbHNlIHtcbiAgICAgIHRoaXMuZHJvcEhlYWx0aFBvdGlvbigpO1xuICAgIH1cbiAgfVxuICBoaXQob3Bwb25lbnQpIHtcbiAgICBpZiAodGhpcy5hdHRhY2sgPiBvcHBvbmVudC5hcm1vcikge1xuICAgICAgbGV0IGRhbWFnZSA9IHRoaXMuYXR0YWNrIC0gb3Bwb25lbnQuYXJtb3I7XG4gICAgICBpZiAoZGFtYWdlID49IE1hdGguZmxvb3IoTWF0aC5yYW5kb20oKSkpIHtcbiAgICAgICAgb3Bwb25lbnQuSFAgLT0gZGFtYWdlO1xuICAgICAgfSBlbHNlIHtcbiAgICAgICAgY29uc29sZS5sb2coXCJCbG9ja2VkIVwiKTtcbiAgICAgIH1cbiAgICB9IGVsc2Uge1xuICAgICAgY29uc29sZS5sb2coXCJNaXNzZWQhXCIpO1xuICAgIH1cblxuICAgIGlmIChvcHBvbmVudC5jdXJyZW50SFAgPD0gMCkge1xuICAgICAgb3Bwb25lbnQuYmF0dGxlRW5kKCk7XG4gICAgfVxuICB9XG5cbiAgc3BlY2lhbEhpdChvcHBvbmVudCkge1xuICAgIHRoaXMuTWFuYSAtPSB0aGlzLnNwZWNpYWxNYW5hO1xuICAgIGxldCBzcGVjaWFsQXR0YWNrID0gdGhpcy5hdHRhY2sgKiAoMSArIHRoaXMuc3BlY2lhbCAvIDEwMCk7XG4gICAgaWYgKHNwZWNpYWxBdHRhY2sgPiBvcHBvbmVudC5hcm1vcikge1xuICAgICAgbGV0IGRhbWFnZSA9IHNwZWNpYWxBdHRhY2sgLSBvcHBvbmVudC5hcm1vcjtcbiAgICAgIGlmIChkYW1hZ2UgPj0gTWF0aC5mbG9vcihNYXRoLnJhbmRvbSgpKSkge1xuICAgICAgICBvcHBvbmVudC5IUCAtPSBkYW1hZ2U7XG4gICAgICB9IGVsc2Uge1xuICAgICAgICBjb25zb2xlLmxvZyhcIkJsb2NrZWQhXCIpO1xuICAgICAgfVxuICAgIH0gZWxzZSB7XG4gICAgICBjb25zb2xlLmxvZyhcIk1pc3NlZCFcIik7XG4gICAgfVxuXG4gICAgaWYgKG9wcG9uZW50LmN1cnJlbnRIUCA8PSAwKSB7XG4gICAgICBvcHBvbmVudC5iYXR0bGVFbmQoKTtcbiAgICB9XG4gIH1cbiAgYmF0dGxlRW5kKCkge1xuICAgIGlmICh0aGlzLnBsYXllclR5cGUgPT0gXCJXYXJyaW9yXCIgfHwgdGhpcy5wbGF5ZXJUeXBlID09IFwiTWFnZVwiKSB7XG4gICAgICB0aGlzLmdhbWVPdmVyKCk7XG4gICAgfSBlbHNlIHtcbiAgICAgIC8vIGl0ZW1UeXBlRHJvcCgpO1xuXG4gICAgfVxuICB9XG59XG5cblxuXG4iXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///1\n')}]);</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Jan 09 2019 15:04:38 GMT-0800 (PST)
+</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>
