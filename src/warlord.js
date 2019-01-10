@@ -13,7 +13,9 @@ export class Warlord {
     this.xp = 0;
     this.level = 1;
     this.maxXP = 100;
-    this.inventory = [];
+    this.potionsInventory = [];
+    this.gearsInventory = [];
+    this.dropXP = 0;
   }
   buildWarrior() {
     this.maxHP = 200;
@@ -33,8 +35,7 @@ export class Warlord {
     this.attack = 20;
     this.special = 20;
   }
-  buildEnemy(level) {
-    // need to change these based on level
+  buildGoblin() {
     this.maxHP = 100;
     this.currentHP = this.maxHP;
     this.maxMP = 20;
@@ -42,7 +43,7 @@ export class Warlord {
     this.armor = 0;
     this.attack = 20;
     this.special = 20;
-    this.level = level;
+    this.dropXP = 10;
   }
   gainXP(amount) {
     this.xp += amount;
@@ -57,6 +58,7 @@ export class Warlord {
     this.maxHP *= 1.1;
     this.maxMP *= 1.1;
     this.attack *= 1.1;
+    this.dropXP *= 2;
     this.currentHP = this.maxHP;
     this.currentMP = this.maxMP;
   }
@@ -76,19 +78,26 @@ export class Warlord {
     }
   }
   hit(opponent) {
+    console.log("hit");
+    var msg = "";
     if (this.attack > opponent.armor) {
       let damage = this.attack - opponent.armor;
       if (damage >= Math.floor(Math.random())) {
-        opponent.HP -= damage;
+        opponent.currentHP -= damage;
       } else {
-        console.log("Blocked!");
+        // need to fix random generated dodge so this is reachable
+        // msg = "Blocked!";
+        // console.log(msg);
+        // return msg;
       }
     } else {
-      console.log("Missed!");
+      msg = "Missed!";
+      console.log(msg);
+      return msg;
     }
 
     if (opponent.currentHP <= 0) {
-      opponent.battleEnd();
+      opponent.battleEnd(this);
     }
   }
 
@@ -98,7 +107,7 @@ export class Warlord {
     if (specialAttack > opponent.armor) {
       let damage = specialAttack - opponent.armor;
       if (damage >= Math.floor(Math.random())) {
-        opponent.HP -= damage;
+        opponent.currentHP -= damage;
       } else {
         console.log("Blocked!");
       }
@@ -107,15 +116,18 @@ export class Warlord {
     }
 
     if (opponent.currentHP <= 0) {
-      opponent.battleEnd();
+      opponent.battleEnd(this);
     }
   }
-  battleEnd() {
+  battleEnd(player) {
+
     if (this.playerType == "Warrior" || this.playerType == "Mage") {
       this.gameOver();
     } else {
-      // itemTypeDrop();
 
+      //this.itemTypeDrop();
+      player.xp += this.dropXP;
+      console.log(player.xp);
     }
   }
 }
