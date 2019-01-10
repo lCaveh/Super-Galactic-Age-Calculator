@@ -1,0 +1,17 @@
+.container {
+  margin-left: 100px;
+}
+img {
+  width: 200px;
+  height: auto;
+}
+textarea {
+  display: block;
+  font-style: italic;
+}
+.intro {
+  visibility: visible;
+}
+.battle {
+  visibility: hidden;
+}

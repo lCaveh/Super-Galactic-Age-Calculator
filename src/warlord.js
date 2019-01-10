@@ -1,7 +1,14 @@
+import mageImage from './img/mage.png';
+import warriorImage from './img/warrior.png';
+import goblinImage from './img/baby-goblin.png';
+import trollImage from './img/troll.png';
+import giantImage from './img/giant.png';
+
 export class Warlord {
   constructor(type, name) {
     this.playerName = name;
     this.playerType = type;
+    this.image = mageImage;
     this.currentHP = 0;
     this.currentMP = 0;
     this.maxHP = 0;
@@ -20,7 +27,9 @@ export class Warlord {
     this.dropXP = 0;
     this.dodgeRate =0;
   }
+
   buildWarrior() {
+    this.image = warriorImage;
     this.maxHP = 200;
     this.currentHP = this.maxHP;
     this.maxMP = 10;
@@ -31,6 +40,7 @@ export class Warlord {
     this.dodgeRate = 5;
   }
   buildMage() {
+    this.image = mageImage;
     this.maxHP = 100;
     this.currentHP = this.maxHP;
     this.maxMP = 20;
@@ -41,6 +51,8 @@ export class Warlord {
     this.dodgeRate = 10;
   }
   buildGoblin() {
+    this.playerType="Goblin";
+    this.image = goblinImage;
     this.maxHP = 50;
     this.currentHP = this.maxHP;
     this.maxMP = 30;
@@ -52,6 +64,8 @@ export class Warlord {
     this.dodgeRate = 20;
   }
   buildTroll() {
+    this.playerType="Troll";
+    this.image = trollImage;
     this.maxHP = 100;
     this.currentHP = this.maxHP;
     this.maxMP = 20;
@@ -63,6 +77,8 @@ export class Warlord {
     this.dodgeRate = 15;
   }
   buildGiant() {
+    this.playerType="Giant";
+    this.image = giantImage;
     this.maxHP = 200;
     this.currentHP = this.maxHP;
     this.maxMP = 10;
@@ -72,6 +88,19 @@ export class Warlord {
     this.special = 30;
     this.dropXP = 10;
     this.dodgeRate = 10;
+  }
+  buildRandomEnemy(level){
+    let random = Math.floor((Math.random() * 3) + 1);
+    if (random==1) {
+      this.buildGoblin();
+    } else if (random==2) {
+      this.buildTroll();
+    } else {
+      this.buildGiant();
+    }
+    for (let i=0;i<=level;i++){
+      this.gainLevel();
+    }
   }
   gainXP(amount) {
     this.xp += amount;
@@ -178,7 +207,7 @@ export class Warlord {
     this.weaponLevel = level;
   }
   gameOver(){
-
+    this.level = 0;
   }
   hpPotionConsume(){
     this.currentHP += this.maxHP/4;

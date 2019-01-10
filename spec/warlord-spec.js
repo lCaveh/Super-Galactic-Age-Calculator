@@ -67,4 +67,5 @@ describe('Warlord', function () {
     testPlayer.mpPotionConsume();
     expect(testPlayer.currentMP).toEqual(20);
   });
+
 });
