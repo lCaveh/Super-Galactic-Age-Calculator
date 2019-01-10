@@ -70,7 +70,7 @@ export class Warlord {
     this.currentHP = this.maxHP;
     this.maxMP = 20;
     this.currentMP = this.maxMP;
-    this.armor = this.maxHP/20;
+    this.armor = Math.round(this.maxHP/20);
     this.attack = 20;
     this.special = 50;
     this.dropXP = 10;
@@ -83,7 +83,7 @@ export class Warlord {
     this.currentHP = this.maxHP;
     this.maxMP = 10;
     this.currentMP = this.maxMP;
-    this.armor = this.maxHP/15;
+    this.armor = Math.round(this.maxHP/15);
     this.attack = 10;
     this.special = 30;
     this.dropXP = 10;
@@ -112,14 +112,14 @@ export class Warlord {
     }
   }
   gainLevel() {
-    this.maxHP *= 1.1;
-    this.maxMP *= 1.1;
-    this.attack *= 1.1;
+    this.maxHP = Math.round(this.maxHP*1.1);
+    this.maxMP = Math.round(this.maxMP*1.1);
+    this.attack = Math.round(this.attack*1.1);
     if (this.playerType=="warrior" || this.playerType=="Mage"){
       //do nothing
     } else {
       this.specialMana+=1;
-      this.dropXP *= 1.5;
+      this.dropXP = Math.round(this.dropXP*1.5);
     }
     this.currentHP = this.maxHP;
     this.currentMP = this.maxMP;
@@ -150,11 +150,6 @@ export class Warlord {
     } else {
       //do nothing
     }
-
-    if (opponent.currentHP <= 0) {
-      opponent.hp = 0;
-      opponent.battleEnd(this);
-    }
   }
 
   specialHit(opponent) {
@@ -170,11 +165,19 @@ export class Warlord {
     } else {
       //do nothing
     }
-
-    if (opponent.currentHP <= 0) {
-      opponent.hp = 0;
-      opponent.battleEnd(this);
+  }
+  enemyHit(player){
+    if (this.mana>this.specialMana){
+      let random=Math.floor(Math.random())*2+1;
+      if (random==1){
+        this.hit(player);
+      } else {
+        this.specialHit(player);
+      }
+    } else {
+      this.hit(player);
     }
+    console.log("player hp:",player.currentHP);
   }
   battleEnd(player) {
 
@@ -196,13 +199,13 @@ export class Warlord {
   }
   equipArmor(level){
     let armorAdded = level - this.armorLevel;
-    this.armor *= Math.pow(1.1,armorAdded);
-    this.hp *= Math.pow(1.1,armorAdded);
+    this.armor *= Math.round(Math.pow(1.1,armorAdded));
+    this.hp *= Math.round(Math.pow(1.1,armorAdded));
     this.armorLevel = level;
   }
   equipWeapon(level){
     let weaponAdded = level - this.weaponLevel;
-    this.attack *= Math.pow(1.1,weaponAdded);
+    this.attack *= Math.round(Math.pow(1.1,weaponAdded));
     this.special += weaponAdded;
     this.weaponLevel = level;
   }
@@ -210,16 +213,15 @@ export class Warlord {
     this.level = 0;
   }
   hpPotionConsume(){
-    this.currentHP += this.maxHP/4;
+    this.currentHP += Math.round(this.maxHP/4);
     if (this.currentHP>this.maxHP){
-      this.currentHP = this.maxHP;
+      this.currentHP = Math.round(this.maxHP);
     }
   }
   mpPotionConsume(){
-    this.currentMP += this.maxMP/4;
+    this.currentMP += Math.round(this.maxMP/4);
     if (this.currentMP>this.maxMP){
-      this.currentMP = this.maxMP;
+      this.currentMP = Math.round(this.maxMP);
     }
   }
-
 }

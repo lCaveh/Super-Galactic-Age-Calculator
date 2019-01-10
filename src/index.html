@@ -5,24 +5,29 @@
   <title>Warlords</title>
 </head>
 <body>
-  <div class = "container intro">
-    <h1>Create Your Character:</h1>
-    <textarea name="name" rows="1" cols="50">Enter your character name</textarea>
-    <br>
-    <p>
-      Select a character class:
-    </p>
-    <br>
-    <button type="button" name="warrior"><img src = "" alt = "warrior" id="selectWarrior"></button>
-    <button type="button" name="mage"><img src = "" alt = "mage" id="selectMage"></button>
-    <!-- <div class="move">
-      <button type="button" name="nextLevel" id="nextLevel">Go to next level</button>
-      <button type="button" name="currentLevel" id="currentLevel">Fight the monsters at this level</button>
-    </div> -->
-    <div class="battle">
-      <img src = "" alt = "enemy" id = "currentEnemy" />
-      <img src = "" alt = "player" id = "player" />
+  <div class = "container">
+    <div class="intro">
+      <h1>Create Your Character:</h1>
+      <textarea name="name" rows="1" cols="50">Enter your character name</textarea>
+      <br>
+      <p>
+        Select a character class:
+      </p>
+      <br>
+      <img src = "" alt = "warrior" id="selectWarrior">
+      <img src = "" alt = "mage" id="selectMage"></div>
+      <div class="move">
+        <button type="button" name="nextLevel" id="nextLevel">Go to next level</button>
+        <button type="button" name="currentLevel" id="currentLevel">Fight the monsters at this level</button><br>
+      </div>
+      <div class="battle">
+        <button type="button" name="hit" id="hit">Attack</button>
+        <button type="button" name="specialHit" id="specialHit">Special Attack</button>
+        <button type="button" name="useHP" id="useHP">use Hp Potion</button>
+        <button type="button" name="useMP" id="useMP">use Mp Potion</button><br>
+
+
+      </div>
     </div>
-  </div>
-</body>
-</html>
+  </body>
+  </html>

@@ -37,21 +37,16 @@ describe('Warlord', function () {
   });
 
   it('player should gain xp from killing enemy', function () {
-    testPlayer.attack = 20;
-    testEnemy.armor = 5;
-    testEnemy.dodgeRate =0;
-    testEnemy.currentHP = 10;
-    testPlayer.hit(testEnemy);
+    testEnemy.currentHP = 0;
+    testEnemy.dropXP = 10;
+    testEnemy.battleEnd(testPlayer);
     expect(testPlayer.xp).toEqual(10);
   });
 
   it('player should gain level from killing enemy', function () {
-    testPlayer.attack = 20;
-    testEnemy.armor = 5;
-    testEnemy.dropXP = 105;
-    testEnemy.dodgeRate= 0;
-    testEnemy.currentHP = 10;
-    testPlayer.hit(testEnemy);
+    testEnemy.currentHP = 0;
+    testEnemy.dropXP = 100;
+    testEnemy.battleEnd(testPlayer);
     expect(testPlayer.level).toEqual(2);
   });
 

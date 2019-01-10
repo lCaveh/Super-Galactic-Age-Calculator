@@ -10,8 +10,11 @@ textarea {
   font-style: italic;
 }
 .intro {
-  visibility: visible;
+  display: block;
 }
 .battle {
-  visibility: hidden;
+  display: none;
+}
+.move {
+  display: none;
 }
