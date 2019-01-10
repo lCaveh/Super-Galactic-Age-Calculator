@@ -33,12 +33,13 @@ $("img#player").attr("src", (player.image));
   $(".move").append(`<img src="${player.image}" id="player">`);
   // generate enemy based on selected level
   let enemy=new Warlord("Fighter","Enemy");
-  enemy.buildRandomEnemy(stage);
   $("button#nextLevel").click(function(){
     stage++;
-    battle(player,stage);
+    enemy.buildRandomEnemy(stage);
+    battle(player,enemy);
   });
   $("button#currentLevel").click(function(){
+    enemy.buildRandomEnemy(stage);
     battle(player,enemy);
   });
 }
@@ -48,8 +49,8 @@ function battle(player,enemy){
   $(".battle").show();
   $(".battle").prepend(`<img src="${enemy.image}" id="enemy"><br>`);
   $(".battle").append(`<img src="${player.image}" id="player">`);
-  $(".battle").prepend('<p>Enemy Health: <span id = "enemyHP"></span> </p>');
-  $(".battle").append('<p>Player Health: <span id = "playerHP"></span></p>');
+  $(".battle").prepend(`<p>Enemy Health: <span id = "enemyHP">${enemy.currentHP}</span> </p>`);
+  $(".battle").append(`<p>Player Health: <span id = "playerHP">${player.currentHP}</span></p>`);
 
   attack(player,enemy);
 

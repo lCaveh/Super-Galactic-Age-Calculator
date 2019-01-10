@@ -98,7 +98,7 @@ export class Warlord {
     } else {
       this.buildGiant();
     }
-    for (let i=0;i<=level;i++){
+    for (let i=1;i<level;i++){
       this.gainLevel();
     }
   }
@@ -140,9 +140,12 @@ export class Warlord {
     }
   }
   hit(opponent) {
+    console.log("hit was called");
     if (this.attack > opponent.armor) {
       let damage = this.attack - opponent.armor;
-      if (Math.floor(Math.random())*100+1 > opponent.dodgeRate){
+      console.log(Math.floor(Math.random()*100)+1);
+      if (Math.floor(Math.random()*100)+1 > opponent.dodgeRate){
+        console.log("hit successfully");
         opponent.currentHP -= damage;
       } else {
         //do nothing
@@ -157,7 +160,7 @@ export class Warlord {
     let specialAttack = this.attack * (1 + this.special / 100);
     if (specialAttack > opponent.armor) {
       let damage = specialAttack - opponent.armor;
-      if (Math.floor(Math.random())*100+1 > opponent.dodgeRate){
+      if (Math.floor(Math.random()*100)+1 > opponent.dodgeRate){
         opponent.currentHP -= damage;
       } else {
         //do nothing
@@ -168,7 +171,7 @@ export class Warlord {
   }
   enemyHit(player){
     if (this.mana>this.specialMana){
-      let random=Math.floor(Math.random())*2+1;
+      let random=Math.floor(Math.random()*2)+1;
       if (random==1){
         this.hit(player);
       } else {
