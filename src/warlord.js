@@ -78,7 +78,6 @@ export class Warlord {
     }
   }
   hit(opponent) {
-    console.log("hit");
     var msg = "";
     if (this.attack > opponent.armor) {
       let damage = this.attack - opponent.armor;
@@ -92,7 +91,6 @@ export class Warlord {
       }
     } else {
       msg = "Missed!";
-      console.log(msg);
       return msg;
     }
 
@@ -127,7 +125,6 @@ export class Warlord {
 
       //this.itemTypeDrop();
       player.xp += this.dropXP;
-      console.log(player.xp);
     }
   }
 }

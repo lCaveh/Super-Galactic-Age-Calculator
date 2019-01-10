@@ -36,14 +36,11 @@ describe('Warlord', function () {
     expect(testEnemy.currentHP).toBeLessThan(100);
   });
 
-  it('wwww', function () {
+  it('player should gain xp from killing enemy', function () {
     testPlayer.attack = 20;
     testEnemy.armor = 5;
     testEnemy.currentHP = 10;
     testPlayer.hit(testEnemy);
-    console.log(testPlayer);
-    console.log(testEnemy);
-
     expect(testPlayer.xp).toEqual(10);
   });
 });
