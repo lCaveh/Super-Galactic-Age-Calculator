@@ -68,4 +68,23 @@ describe('Warlord', function () {
     expect(testPlayer.currentMP).toEqual(20);
   });
 
+  it('battleEnd with player dead should set level back to zero', function(){
+    testPlayer.level = 10;
+    testEnemy.currentHP = 0;
+    testPlayer.battleEnd(testEnemy);
+    expect(testPlayer.level).toEqual(0);
+  })
+
+  it('buildRandomEnemy creates a goblin, troll, or giant object', function() {
+    let randomMonster = new Warlord("test", "Scary Monster");
+    randomMonster.buildRandomEnemy(1);
+    function isEnemyType (warlordObject){
+      if((warlordObject.playerType == "Goblin")||(warlordObject.playerType == "Troll")||(warlordObject.playerType == "Giant")){
+        return true;
+      }else {
+        return false;
+      }
+    }
+    expect(isEnemyType(randomMonster)).toBe(true);
+  })
 });
