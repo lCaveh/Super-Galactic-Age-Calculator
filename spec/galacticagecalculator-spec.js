@@ -16,6 +16,14 @@ describe('GalacticAgeCalculator', function () {
     console.log(birthday, lifeStyle, galacticAge);
   });
 
+  it('should calculate the age in days with given birthday', function () {
+    galacticAge.getAge();
+    expect(galacticAge.ageInDays).toEqual(14276);
+  });
 
+  it('should calculate the age in days with given birthday', function () {
+    galacticAge.getAge();
+    expect(galacticAge.ageInYears.toFixed(2)).toEqual('39.08');
+  });
 
 });
