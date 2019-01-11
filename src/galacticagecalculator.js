@@ -1,3 +1,12 @@
+import MercuryImage from './img/Mercury.jpg';
+import VenusImage from './img/Venus.jpeg';
+import EarthImage from './img/Earth.jpg';
+import MarsImage from './img/Mars.jpg';
+import JupiterImage from './img/Jupiter.jpeg';
+import SaturnImage from './img/Saturn.jpg';
+import UranusImage from './img/Uranus.jpg';
+import NeptuneImage from './img/Neptune.jpg';
+import PlutoImage from './img/Pluto.jpg';
 export class GalacticAgeCalculator {
   constructor (birthday,lifeStyle) {
     this.today = new Date();
@@ -5,7 +14,8 @@ export class GalacticAgeCalculator {
     this.lifeStyle = lifeStyle;
     this.ageInDays = 0;
     this.ageInYears = 0.00;
-    this.planetYears = {Mercury:0.24, Venus:0.62, Earth:1, Mars:1.88, Jupiter:11.86};
+    this.planetYears = {Mercury:0.24, Venus:0.62, Earth:1, Mars:1.88, Jupiter:11.86, Saturn:29.48, Uranus:84, Neptune:164.8, Pluto:248 };
+    this.planetImages={Mercury:MercuryImage, Venus:VenusImage, Earth:EarthImage, Mars:MarsImage, Jupiter:JupiterImage, Saturn:SaturnImage, Uranus:UranusImage, Neptune:NeptuneImage, Pluto:PlutoImage };
     this.ageInPlanet = 0.00;
     this.expectedAge = 0;
     this.remainAge = 0;

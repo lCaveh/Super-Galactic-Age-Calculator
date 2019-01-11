@@ -29,7 +29,7 @@ describe('GalacticAgeCalculator', function () {
   it('it should calculate the age in other planet', function () {
     galacticAge.getAge();
     galacticAge.getAgeInPlanet("Mercury");
-    expect(galacticAge.ageInPlanet.toFixed(2)).toEqual('162.86');
+    expect(galacticAge.ageInPlanet.toFixed(1)).toEqual('162.9');
   });
 
   it('it should calculate average expected age', function () {
