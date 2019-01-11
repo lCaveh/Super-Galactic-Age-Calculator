@@ -5,6 +5,8 @@ export class GalacticAgeCalculator {
     this.lifeStyle = lifeStyle;
     this.ageInDays = 0;
     this.ageInYears = 0.00;
+    this.planetYears = {Mercury:0.24, Venus:0.62, Earth:1, Mars:1.88, Jupiter:11.86}
+    this.ageInPlanet = 0.00;
 
   }
 
@@ -14,5 +16,8 @@ export class GalacticAgeCalculator {
     let difference = this.today-this.birthday;
     this.ageInDays= Math.round(difference/milisecondsInDay);
     this.ageInYears=difference/milisecondsInYear;
+  }
+  getAgeInPlanet(planet) {
+    this.ageInPlanet= this.ageInYears/this.planetYears[planet];
   }
 }

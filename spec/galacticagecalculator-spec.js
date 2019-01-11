@@ -23,7 +23,13 @@ describe('GalacticAgeCalculator', function () {
 
   it('should calculate the age in days with given birthday', function () {
     galacticAge.getAge();
-    expect(galacticAge.ageInYears.toFixed(2)).toEqual('39.08');
+    expect(galacticAge.ageInYears.toFixed(2)).toEqual('39.09');
+  });
+
+  it('should calculate the age in other planet', function () {
+    galacticAge.getAge();
+    galacticAge.getAgeInPlanet("Mercury");
+    expect(galacticAge.ageInPlanet.toFixed(2)).toEqual('162.85');
   });
 
 });
