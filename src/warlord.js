@@ -18,7 +18,7 @@ export class Warlord {
     this.attack = 0;
     this.special = 0;
     this.weaponLevel = 0;
-    this.specialMana = 0;
+    this.specialMP = 0;
     this.xp = 0;
     this.level = 1;
     this.maxXP = 100;
@@ -35,18 +35,20 @@ export class Warlord {
     this.maxMP = 10;
     this.currentMP = this.maxMP;
     this.armor = 5;
-    this.attack = 10;
+    this.attack = 15;
+    this.specialMP = 5;
     this.special = 10;
     this.dodgeRate = 5;
   }
   buildMage() {
     this.image = mageImage;
-    this.maxHP = 100;
+    this.maxHP = 120;
     this.currentHP = this.maxHP;
     this.maxMP = 20;
     this.currentMP = this.maxMP;
     this.armor = 2;
     this.attack = 20;
+    this.specialMP = 5;
     this.special = 20;
     this.dodgeRate = 10;
   }
@@ -79,7 +81,7 @@ export class Warlord {
   buildGiant() {
     this.playerType="Giant";
     this.image = giantImage;
-    this.maxHP = 200;
+    this.maxHP = 150;
     this.currentHP = this.maxHP;
     this.maxMP = 10;
     this.currentMP = this.maxMP;
@@ -118,7 +120,7 @@ export class Warlord {
     if (this.playerType=="warrior" || this.playerType=="Mage"){
       //do nothing
     } else {
-      this.specialMana+=1;
+      this.specialMP+=1;
       this.dropXP = Math.round(this.dropXP*1.5);
     }
     this.currentHP = this.maxHP;
@@ -140,12 +142,9 @@ export class Warlord {
     }
   }
   hit(opponent) {
-    console.log("hit was called");
     if (this.attack > opponent.armor) {
       let damage = this.attack - opponent.armor;
-      console.log(Math.floor(Math.random()*100)+1);
       if (Math.floor(Math.random()*100)+1 > opponent.dodgeRate){
-        console.log("hit successfully");
         opponent.currentHP -= damage;
       } else {
         //do nothing
@@ -156,8 +155,9 @@ export class Warlord {
   }
 
   specialHit(opponent) {
-    this.Mana -= this.specialMana;
-    let specialAttack = this.attack * (1 + this.special / 100);
+    if (this.currentMP>=this.specialMP){
+    this.currentMP -= this.specialMP;
+    let specialAttack = Math.round(this.attack * (1 + this.special / 100));
     if (specialAttack > opponent.armor) {
       let damage = specialAttack - opponent.armor;
       if (Math.floor(Math.random()*100)+1 > opponent.dodgeRate){
@@ -168,9 +168,12 @@ export class Warlord {
     } else {
       //do nothing
     }
+  } else {
+    this.hit(opponent);
   }
+}
   enemyHit(player){
-    if (this.mana>this.specialMana){
+    if (this.currentMP>this.specialMP){
       let random=Math.floor(Math.random()*2)+1;
       if (random==1){
         this.hit(player);
@@ -180,7 +183,6 @@ export class Warlord {
     } else {
       this.hit(player);
     }
-    console.log("player hp:",player.currentHP);
   }
   battleEnd(player) {
 

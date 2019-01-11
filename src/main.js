@@ -51,6 +51,8 @@ function battle(player,enemy){
   $(".battle").append(`<img src="${player.image}" id="player">`);
   $(".battle").prepend(`<p>Enemy Health: <span id = "enemyHP">${enemy.currentHP}</span> </p>`);
   $(".battle").append(`<p>Player Health: <span id = "playerHP">${player.currentHP}</span></p>`);
+  $(".battle").prepend(`<p>Enemy Mana: <span id = "enemyMP">${enemy.currentMP}</span> </p>`);
+  $(".battle").append(`<p>Player Mana: <span id = "playerMP">${player.currentMP}</span></p>`);
 
   attack(player,enemy);
 
@@ -59,28 +61,32 @@ function attack(player,enemy){
   $("button#hit").click(function(){
     player.hit(enemy);
     $("span#enemyHP").text(enemy.currentHP);
-    if (enemy.currentHP>0) {
+    $("span#enemyMP").text(enemy.currentMP);
+    if (enemy.currentHP>0 && player.currentHP>0) {
       enemy.enemyHit(player);
       $("span#playerHP").text(player.currentHP);
+      $("span#playerMP").text(player.currentMP);
+      $("button#hit").off("click");
+      attack(player,enemy);
     } else {
       enemy.battleEnd(player);
+      $("button#hit").off("click");
     }
-    $("button#hit").off("click");
-    console.log("enemy hp:",enemy.currentHP);
-    attack(player,enemy);
+
   });
   $("button#specialHit").click(function(){
     player.specialHit(enemy);
-    if (enemy.currentHP>0) {
+    $("span#enemyHP").text(enemy.currentHP);
+    $("span#enemyMP").text(enemy.currentMP);
+    if (enemy.currentHP>0 && player.currentHP>0) {
       enemy.enemyHit(player);
       $("span#playerHP").text(player.currentHP);
+      $("span#playerMP").text(player.currentMP);
+      $("button#specialHit").off("click");
+      attack(player,enemy);
     } else {
       enemy.battleEnd(player);
-      $("span#playerHP").text(player.currentHP);
-      $("button#hit").off("click");
+      $("button#specialHit").off("click");
     }
-    $("button#specialHit").off("click");
-    console.log("enemy hp:",enemy.currentHP);
-    attack(player,enemy);
   })
 }
