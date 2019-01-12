@@ -1,5 +1,7 @@
-.nav img{
+img{
   width: 100%;
+  border-style: solid;
+  border-color: white;
 }
 .result{
   display: none;
