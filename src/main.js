@@ -29,19 +29,14 @@ $(document).ready(function () {
         $("img#Show").attr("src",galacticAge.planetImages[this.id]);
         galacticAge.getAgeInPlanet(this.id);
         galacticAge.getRemainAgeInPlanet(this.id);
-        $("p.age").text(`Your age at ${this.id} planet is ${galacticAge.ageInPlanet.toFixed(2)}`);
+        $("p.age").text(`Your age at ${this.id} planet is ${galacticAge.ageInPlanet.toFixed(2)} years.`);
         if (galacticAge.remainAge>=0){
           $("p.remainAge").text(`You supposed to live ${galacticAge.remainAgeInPlanet.toFixed(2)} years more in ${this.id}`);
         } else {
           galacticAge.remainAge= Math.abs(galacticAge.remainAge);
           $("p.remainAge").text(`You lived past years from the life expectancy ${galacticAge.remainAgeInPlanet.toFixed(2)}`);
-
         }
       });
     }
-
-
-
-
   });
 });
